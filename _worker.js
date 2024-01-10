@@ -71,17 +71,10 @@ export default {
 							}
 						});
 					}
-					case `/bestip/${userID_Path}`: {
-						const bestiplink = `https://sub.xf.free.hr/auto?host=${request.headers.get('Host')}&uuid=${userID_Path}`
-						const reqHeaders = new Headers(request.headers);
-						const bestipresponse = await fetch(bestiplink, { redirect: 'manual', headers: reqHeaders, });
-						// Construct and return response object
-						return bestipresponse
-					}
 					default:
 						// return new Response('Not found', { status: 404 });
 						// For any other path, reverse proxy to 'www.fmprc.gov.cn' and return the original response, caching it in the process
-						const hostnames = ['www.fmprc.gov.cn', 'www.xuexi.cn', 'www.gov.cn', 'www.bing.com', 'www.mofcom.gov.cn', 'www.gfbzb.gov.cn', 'www.miit.gov.cn', 'www.12377.cn'];
+						const hostnames = ['www.bing.com'];
 						url.hostname = hostnames[Math.floor(Math.random() * hostnames.length)];
 						url.protocol = 'https:';
 
